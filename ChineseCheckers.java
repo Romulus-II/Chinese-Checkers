@@ -6,11 +6,12 @@
 package chinesecheckers;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -19,26 +20,43 @@ import javafx.stage.Stage;
  */
 public class ChineseCheckers extends Application {
     
+    private final int WIN_WIDTH = 1000, WIN_HEIGHT = 750;
+    private final int CAN_WIDTH = 750, CAN_HEIGHT = 750;
+    
     @Override
     public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        
         StackPane root = new StackPane();
-        root.getChildren().add(btn);
         
-        Scene scene = new Scene(root, 300, 250);
         
-        primaryStage.setTitle("Hello World!");
+        Canvas canvas = new Canvas(CAN_WIDTH, CAN_HEIGHT);
+        Pane pane = new Pane(canvas);
+        
+        //Very Important!!
+        int numPlayers = 6;
+        
+        Board board = new Board(canvas, pane, numPlayers);
+        
+        
+        //CreateMenu menu = new CreateMenu();
+        CreateMenu menu = new CreateMenu();
+        
+        VBox main = new VBox();
+        
+        HBox content = new HBox();
+        content.getChildren().add(pane);
+        
+        main.getChildren().addAll(menu, content);
+        
+        root.getChildren().add(main);
+        
+        Scene scene = new Scene(root, WIN_WIDTH, WIN_HEIGHT);
+        
+        primaryStage.setTitle("Chinese Checkers");
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setOnCloseRequest(e -> {
+            menu.scrap();
+        });
     }
 
     /**
