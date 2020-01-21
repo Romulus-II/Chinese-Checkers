@@ -15,7 +15,7 @@ import javafx.scene.shape.ArcType;
  *
  * @author gfragoso
  */
-public class Board{
+public class Board {
     
     private Pane pane;
     private Canvas canvas;
