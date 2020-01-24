@@ -36,6 +36,17 @@ public class Team {
     public boolean inGoal(){
         return in_goal;
     }
+    
+    public void activate(){
+        
+    }
 
+    
+    private Space starting_space;
+    private Space ending_space;
+    
+    public boolean finishedTurn(){
+        return false;
+    }
     
 }

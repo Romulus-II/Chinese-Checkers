@@ -103,5 +103,52 @@ public class Space {
     }
     
     
+    private String getStrX(){
+        return Integer.toString(x+13);
+    }    
+    private String getStrY(){
+        switch(y){
+            case -8:
+                return "a";
+            case -7:
+                return "b";
+            case -6:
+                return "c";
+            case -5:
+                return "d";
+            case -4:
+                return "e";
+            case -3:
+                return "f";
+            case -2:
+                return "g";
+            case -1:
+                return "h";
+            case 0:
+                return "i";
+            case 1:
+                return "j";
+            case 2:
+                return "k";
+            case 3:
+                return "L";
+            case 4:
+                return "m";
+            case 5:
+                return "n";
+            case 6:
+                return "o";
+            case 7:
+                return "p";
+            case 8:
+                return "q";
+                
+        }
+        return "y";
+    }
+    
+    public String toString(){
+        return getStrX() + getStrY();
+    }
     
 }
