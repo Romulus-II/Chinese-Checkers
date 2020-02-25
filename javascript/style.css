@@ -5,5 +5,13 @@ canvas {
   border: solid 5px black;
 }
 table {
-  text-align: right;
+  display: inline-block;
+}
+canvas {
+  display: inline-block;
+}
+content {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

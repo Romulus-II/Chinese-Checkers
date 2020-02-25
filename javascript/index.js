@@ -1,31 +1,48 @@
-var canvas = document.getElementById('myCanvas');
-var ctx = canvas.getContext('2d');
+// Create and fill 2D space array
+createSpaces();
 
-/*var window_loaded = false;
-window.addEventListener('resize', resizeCanvas, false);
-function resizeCanvas() {
-  // Account for mobile phone users holding their phones upright.
-  if(window.innerHeight > window.innerWidth)
-  {
-    //Refractor for mobile users
-    canvas.width = window.innerWidth - (window.innerWidth/10);
-    canvas.height = window.innerHeight - (window.innerHeight/10);
-  }
-  else
-  {
-    canvas.width = window.innerWidth - (window.innerWidth/10);
-    canvas.height = window.innerHeight - (window.innerHeight/10);
-  }
-  if(window_loaded){
-    resetWindow();
+// Using 10 element subarrays of space, create array teams
+//   To do this, we must create two separate subarrays: team_i_spaces and
+//    team_i_goal
+function setUpTeams(){
+  switch(num_players){
+    case 1:
+      createTeam1();
+      break;
+    case 2:
+      createTeam2();
+      createTeam5();
+      break;
+    case 3:
+      createTeam1();
+      createTeam3();
+      createTeam5();
+      break;
+    case 4:
+      createTeam2();
+      createTeam3();
+      createTeam5();
+      createTeam6();
+      break;
+    case 5:
+      createTeam1();
+      createTeam2();
+      createTeam3();
+      createTeam5();
+      createTeam6();
+      break;
+    case 6:
+      createTeam1();
+      createTeam2();
+      createTeam3();
+      createTeam4();
+      createTeam5();
+      createTeam6();
+      break;
   }
 }
-resizeCanvas();
-window_loaded = true;
-function resetWindow(){
-}*/
 
-createSpaces();
+setUpTeams();
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -36,6 +53,7 @@ function draw() {
   ctx.closePath();
 
   drawSpaces();
+  drawPieces();
 
   requestAnimationFrame(draw);
 }
